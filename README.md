@@ -2,7 +2,9 @@
 
 User dashboard template created using MEAN stack.
 
-See live demo at Heroku https://user-dashboard-app.herokuapp.com/
+See live demo at Heroku https://user-dashboard-app.herokuapp.com/ with test account username: `tester`, password: `123456`
+
+
 
 ## Getting Started
 
