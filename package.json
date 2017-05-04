@@ -1,0 +1,24 @@
+{
+  "name": "user-dashboard-app",
+  "version": "1.0.0",
+  "description": "MEAN stack user dashboard app ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
+  },
+  "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "cors": "*",
+    "express": "*",
+    "helmet": "^3.5.0",
+    "jsonwebtoken": "*",
+    "mongoose": "*",
+    "mongoose-unique-validator": "^1.0.5",
+    "passport": "*",
+    "passport-jwt": "*"
+  },
+  "author": "Leevi Lehtonen",
+  "license": "ISC"
+}
