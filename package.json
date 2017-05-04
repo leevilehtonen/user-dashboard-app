@@ -20,5 +20,5 @@
     "passport-jwt": "*"
   },
   "author": "Leevi Lehtonen",
-  "license": "ISC"
+  "license": "MIT"
 }
