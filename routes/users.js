@@ -42,6 +42,7 @@ router.post('/authenticate', (req, res, next) => {
                 const token = jwt.sign(payload, config.secret, {
                     expiresIn: 604800
                 });
+                res.cookie('XSRF-TOKEN', req.csrfToken(), { secure : true });
                 res.json({
                     success: true,
                     token: `JWT ${token}`,

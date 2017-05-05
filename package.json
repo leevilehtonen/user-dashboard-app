@@ -10,7 +10,9 @@
   "dependencies": {
     "bcryptjs": "*",
     "body-parser": "*",
+    "cookie-parser": "^1.4.3",
     "cors": "*",
+    "csurf": "^1.9.0",
     "express": "*",
     "helmet": "^3.5.0",
     "jsonwebtoken": "*",

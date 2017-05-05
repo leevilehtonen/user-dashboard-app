@@ -1,7 +1,9 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const csurf = require('csurf');
 const passport = require('passport');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
@@ -17,8 +19,14 @@ const port = process.env.PORT || 3000;
 
 // Middleware
 app.use(helmet());
-app.use(cors());
 app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(csurf({
+    key : 'XSRF-TOKEN',
+    cookie : true,
+    
+}));
+app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Authentication middleware
