@@ -2,12 +2,11 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const cors = require('cors');
-const csurf = require('csurf');
 const passport = require('passport');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 const config = require('./config/database');
+const csrf = require('csurf');
 
 
 // Route requires
@@ -20,13 +19,13 @@ const port = process.env.PORT || 3000;
 // Middleware
 app.use(helmet());
 app.use(bodyParser.json());
-app.use(cookieParser());
-app.use(csurf({
-    key : 'XSRF-TOKEN',
-    cookie : true,
-    
-}));
-app.use(cors());
+app.use(cookieParser(config.cookieSecret));
+app.use(csrf({cookie:true}));
+app.use(function (req, res, next) {
+    res.cookie("XSRF-TOKEN",req.csrfToken());
+    return next();
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Authentication middleware
@@ -44,6 +43,8 @@ mongoose.connection.on('error', (err) => {
     console.log(`Database error: ${err}`);
 });
 
+
+
 //Routes
 app.use('/users', users);
 
@@ -52,9 +53,12 @@ app.get('/', (req, res) => {
 });
 
 app.get('*', (req, res) => {
+
     res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 app.listen(port, () => {
     console.log(`Server started on port ${port}`)
 });
+
+

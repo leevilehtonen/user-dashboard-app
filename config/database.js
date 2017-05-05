@@ -5,6 +5,8 @@ const generateSecret = (bytes) => {
 };
 
 module.exports = {
-    database: process.env.MONGODB_URI || 'mongodb://localhost:27017/user-dashboard',
-    secret: process.env.SECRET || generateSecret(256)
+  database: process.env.MONGODB_URI || 'mongodb://localhost:27017/user-dashboard',
+  secret: process.env.SECRET || generateSecret(256),
+  cookieSecret: process.env.COOKIESECRET || generateSecret(256)
+
 }
